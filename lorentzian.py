@@ -25,7 +25,7 @@ y = .75 ** x + np.random.randn(233) + 25
  
 # Creating histogram
 
-title = "Fit results: mean = %.3f,  standard deviation = %.4f, # of counts = 233" % (df['g (m/s2)'].mean(), df['g (m/s2)'].std())
+title = "Fit results: mean = %.3f,  standard deviation = %.4f, # of counts = 233, bin width = 0.36" % (df['g (m/s2)'].mean(), df['g (m/s2)'].std())
 
 plt.xlabel('g value (m/s^2)')
 plt.ylabel('# of counts')
@@ -39,10 +39,10 @@ xmin, xmax = plt.xlim()
 xdif = np.linspace(xmin, xmax, 233)
 x = np.arange(xmin, xmax, 0.5)
 p = norm.pdf(xdif, 9.817732353472108, .7338911413111793)
-p = twoLorentzian(x=xdif, cen1=9.8177, amp1=121, wid1=0.45)
+p = twoLorentzian(x=xdif, cen1=9.8177, amp1=121, wid1=0.36)
 #(233)*norm.pdf(xdif, 9.817732353472108, .7338911413111793)
 #plt.plot(xdif, norm.pdf(xdif, df['g (m/s2)'].mean(), df['g (m/s2)'].std()))
-plt.plot(xdif, p)
+plt.plot(xdif, p, color='red')
 
 plt.title('Distribution of g values of J-Lab students \n' + title)
 
